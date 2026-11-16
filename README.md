@@ -35,7 +35,7 @@ node ~/agent-office-runner/bin/agent-office-runner https://khlab-office.com --na
 - 第一次會問密碼，之後不用再輸入。看到 `✓ connected` 就是連上了。
 - 之後你在任何一層樓雇用的 worker 都在這台電腦上跑。第一次在某層樓雇用時，runner 會用你的 `gh` 把那個 repo clone 到 `~/agent-office/projects/<owner>/<repo>`；runner 只在這個資料夾裡工作。
 - 關掉 runner 後，worker 還會在你電腦上跑最多 30 分鐘，期間重新啟動會接回來。
-- 說明裡寫的 `agent-office runner` 就是這個指令。
+- 所有選項：`node ~/agent-office-runner/bin/agent-office-runner --help`。
 
 ## 4. 第一次雇用 worker 時的確認
 

@@ -1,6 +1,6 @@
 {
   "name": "agent-office-runner",
-  "version": "0.1.0-273c03c",
+  "version": "0.1.0-38e8e23",
   "description": "Runs the workers you hire in an Agent Office on your own computer",
   "type": "module",
   "license": "MIT",

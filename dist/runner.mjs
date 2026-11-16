@@ -7463,10 +7463,10 @@ function spawnOpts(spawn2, cwd, local) {
 }
 
 // src/server/runner/index.ts
-var HELP2 = `agent-office runner \u2014 run the workers you hire in an office on this computer
+var help = (command) => `${command} \u2014 run the workers you hire in an office on this computer
 
 Usage:
-  agent-office runner [office] [options]
+  ${command} [office] [options]
 
 Leave it running, one per computer. Every worker you hire in that office starts
 here, in ~/agent-office/projects/<owner>/<repo> (or a worktree of it), with your
@@ -7525,20 +7525,20 @@ function runningAlready(dataDir) {
 }
 var sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 var PING_MS = 25e3;
-async function runnerCommand(argv) {
+async function runnerCommand(argv, command = "agent-office runner") {
   let o;
   try {
     o = parseArgs(argv);
   } catch (err2) {
-    console.error(`agent-office runner: ${err2.message} (see agent-office runner --help)`);
+    console.error(`${command}: ${err2.message} (see ${command} --help)`);
     return 2;
   }
   if (!o) {
-    say(HELP2);
+    say(help(command));
     return 0;
   }
   const fail = (why) => {
-    console.error(`agent-office runner: ${why}`);
+    console.error(`${command}: ${why}`);
     return 1;
   };
   if (process.platform === "win32") return fail("this computer runs Windows, which the runner doesn't support yet");
@@ -7551,7 +7551,7 @@ async function runnerCommand(argv) {
   }
   const office = new Office(url, o.insecure);
   say(`
-  \u{1F5A5}  agent-office runner
+  \u{1F5A5}  ${command}
 `);
   if (!await office.up()) return fail(`no office answers at ${office.origin}`);
   const key = office.origin;
@@ -7689,4 +7689,4 @@ async function connect(office, host, hooks, local, insecure, connected) {
 }
 
 // src/server/runner/main.ts
-process.exit(await runnerCommand(process.argv.slice(2)));
+process.exit(await runnerCommand(process.argv.slice(2), "agent-office-runner"));
