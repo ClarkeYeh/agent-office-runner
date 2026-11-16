@@ -1,0 +1,16 @@
+{
+  "name": "agent-office-runner",
+  "version": "0.1.0-273c03c",
+  "description": "Runs the workers you hire in an Agent Office on your own computer",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "agent-office-runner": "bin/agent-office-runner"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@lydell/node-pty": "1.2.0-beta.15"
+  }
+}
